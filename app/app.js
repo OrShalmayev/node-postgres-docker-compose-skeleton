@@ -4,9 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var debug = require('debug')('app');
 var routes = require('./routes/index');
 var testDbRoutes = require('./routes/test_db.js');
+require('dotenv').config()
 
 var app = express();
 
@@ -56,5 +57,10 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// Creating the server 
+app.set('port', process.env.PORT || 3000);
+var server = app.listen(app.get('port'), function() {
+    console.log(`server started at: http://localhost:${process.env.PORT}`)
+});
 
 module.exports = app;

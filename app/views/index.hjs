@@ -2,10 +2,20 @@
 <html>
   <head>
     <title>{{ title }}</title>
+    {{!-- css --}}
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <header>
+      <nav>
+        <a href="/">Events listener</a>
+        <a href="">Session list</a>
+        <a href="">Session Playback</a>
+      </nav>
+    </header>
     <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}.</p>
+    <p>{{description}}</p>
+    {{!-- js --}}
+    <script src="/javascripts/main.js"></script>
   </body>
 </html>
