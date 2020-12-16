@@ -7,7 +7,8 @@ This starter include:
 Instructions:
 - create a database named coralogix
 - import the sql to your db
+- cd app
 - create a .env file copy the data from .env-example
 - install all npm packages
-- run npm start
+- npm start
 
