@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('mysql');
+require('dotenv').config()
 
 var router = express.Router();
 
