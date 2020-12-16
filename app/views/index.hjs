@@ -9,7 +9,7 @@
     <header>
       <nav>
         <a href="/">Events listener</a>
-        <a href="">Session list</a>
+        <a href="/session-list">Session list</a>
         <a href="">Session Playback</a>
       </nav>
     </header>

@@ -68,7 +68,7 @@
                 }
             }
             console.log('user leaved the page')
-            http.send(`data=${JSON.stringify(recording.events)}&ended_at=${Date.now()}`);
+            http.send(`data=${JSON.stringify(recording.events)}&started_at=${recording.startTime}&width=${recording.width}&height=${recording.height}&ended_at=${Date.now()}`);
         });
 
     }//END window.omload

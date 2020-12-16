@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+    {{!-- header --}}
+    <header>
+        <nav>
+            <a href="/">Events listener</a>
+            <a href="/session-list">Session list</a>
+            <a href="">Session Playback</a>
+        </nav>
+    </header>
+    {{!-- main --}}
+        <main>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Session Date</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#data}}
+                        <tr>    
+                            <th scope="row">{{id}}</th>
+                            <td>{{created_at}}</td>
+                            <td>{{started_at - ended_at}}</td>
+                            <td><a href="">play</a></td>
+                        </tr>
+                    {{/data}}
+                </tbody>
+            </table>
+        </main>
+    <script>
+        console.log(this)
+    </script>
+</body>
+
+</html>
