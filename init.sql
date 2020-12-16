@@ -8,5 +8,7 @@ CREATE TABLE sessions(
     height VARCHAR(255),
     started_at VARCHAR(255),
     ended_at VARCHAR(255),
+    duration VARCHAR(255),
+    html_copy TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

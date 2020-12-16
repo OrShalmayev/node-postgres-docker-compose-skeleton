@@ -33,8 +33,8 @@
                         <tr>    
                             <th scope="row">{{id}}</th>
                             <td>{{created_at}}</td>
-                            <td>{{started_at - ended_at}}</td>
-                            <td><a href="">play</a></td>
+                            <td>{{duration}}</td>
+                            <td><a href="show-session/{{id}}">play</a></td>
                         </tr>
                     {{/data}}
                 </tbody>

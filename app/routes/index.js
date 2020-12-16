@@ -11,15 +11,21 @@ var connection = mysql.createConnection({
   port: process.env.DB_PORT || 3306
 })
 
-/* GET home page. */
+
+/**
+ * Home Page Route
+ */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Or Shalmayev', description: 'Coralogix home programming task' });
 });
 
+/**
+ * Session list Page Route
+ */
 router.get('/session-list', function(req, res, next) {
   let data = null;
 
-  connection.query('SELECT id, created_at, ended_at from sessions', function (error, results, fields) {
+  connection.query('SELECT id, created_at, ended_at, duration from sessions', function (error, results, fields) {
     if (error) {
       console.log('db error')
       throw error
@@ -36,33 +42,16 @@ router.get('/session-list', function(req, res, next) {
 
 });//END router.get('/session-list'
 
-router.get('/show-session/:id', function(req, res, next) {
-
-  connection.query('SELECT id, created_at, started_at, ended_at, (started_at - ended_at) AS duration  from sessions', function (error, results, fields) {
-    if (error) {
-      console.log('db error')
-      throw error
-    };
-    console.log('The sessions:: ', results);
-    data = results
-    res.render('session_list', { 
-      title: 'Or Shalmayev', 
-      description: 'Coralogix home programming task',
-      data,
-    });//END res.render('session_list',
-  });//END connection.query
-  console.log('data', data);
-
-});//END router.get('/session-list'
-
 // store events
 router.post('/store-events', function(req, res, next) {
   console.log('/store-events',req.body);
-  var sql = `INSERT INTO sessions (data, width, height, started_at, ended_at) VALUES (
+  var sql = `INSERT INTO sessions (data, width, height, started_at, duration, html_copy, ended_at) VALUES (
     '${req.body.data}', 
     '${req.body.width}',
     '${req.body.height}',
     '${req.body.started_at}',
+    '${req.body.duration}',
+    '${req.body.html_copy}',
     '${req.body.ended_at}'
     )`;
   connection.query(sql, function (err, result) {
@@ -70,6 +59,28 @@ router.post('/store-events', function(req, res, next) {
     console.log("1 record inserted");
   });
 });//END /store-events
+
+/**
+ * Play Session Page Route
+ */
+router.get('/show-session/:id', function(req, res, next) {
+  let id = req.params.id;
+  console.log(id)
+  connection.query(`SELECT * from sessions where id=${id}`, function (error, results, fields) {
+    if (error) {
+      console.log('db error')
+      throw error
+    };
+    data = {...results[0]}
+    console.log('/show-session/', data)
+    res.render('show_session', { 
+      title: 'Or Shalmayev', 
+      description: 'Coralogix home programming task',
+      data,
+    });//END res.render('session_list',
+  });//END connection.query
+
+});//END router.get('/session-list'
 
 // test for connection with db
 router.get('/test-db', function(req, res, next) {
