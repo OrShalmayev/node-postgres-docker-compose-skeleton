@@ -4,6 +4,9 @@ USE coralogix;
 CREATE TABLE sessions(
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     data json DEFAULT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-    ended_at TIMESTAMP 
+    width VARCHAR(255),
+    height VARCHAR(255),
+    started_at VARCHAR(255),
+    ended_at VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
