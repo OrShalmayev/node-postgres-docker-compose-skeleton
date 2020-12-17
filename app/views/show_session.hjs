@@ -27,10 +27,10 @@
             <section class="player">
                 <div class="player__container">
                     width: {{ data.width }} | height: {{ data.height }}
-                    <iframe style="border:1px solid black" src="" frameborder="0" width="{{ data.width }}" height="{{data.height}}">
-                    </iframe>
                     <button class="player__action player__action--play">Play</button>
                     <button class="player__action player__action--pause">Pause</button>
+                    <iframe style="border:1px solid black" src="" frameborder="0" width="{{ data.width }}" height="{{data.height}}">
+                    </iframe>
                 </div>
             </section>
         </main>
@@ -112,6 +112,10 @@
 
                 if (event.type === "click") {
                     flashClass(fakeCursorElment, "click");
+                    fakeCursorElment.textContent = event.type;
+                    window.setTimeout(()=>{
+                        fakeCursorElment.textContent = '';
+                    }, 300)
                 }
 
                 if (event.type === "keypress") {
@@ -128,7 +132,7 @@
             //add class to cursor when clicked
             function flashClass(el, className) {
                 let prevColor = el.style.backgroundColor; 
-                let prevPadding = parseInt(el.style.padding); 
+                let prevPadding = 2; 
                 el.style.backgroundColor='red';
                 el.style.padding=`${prevPadding*2}px`;
                 window.setTimeout(()=>{
