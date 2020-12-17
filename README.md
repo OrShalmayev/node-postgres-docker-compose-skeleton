@@ -1,4 +1,6 @@
-
+this project Deployed to Heroku
+you can visit it here:
+https://ors-analytics-app.herokuapp.com/session-list
 
 This starter include:
   - A simple Express.js generated app
